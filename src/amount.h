@@ -142,23 +142,23 @@ public:
     SERIALIZE_METHODS(Amount, obj) { READWRITE(obj.amount); }
 };
 
-inline constexpr Amount SATOSHI = Amount::satoshi();
-inline constexpr Amount CASH = 100 * SATOSHI;
-inline constexpr Amount COIN = 100'000'000 * SATOSHI;
+inline constexpr Amount SATOSHI = Amount::yaro();
+inline constexpr Amount CASH = 100 * YARO;
+inline constexpr Amount COIN = 100'000'000 * YARO;
 
 extern const std::string CURRENCY_UNIT;
 
 /**
- * No amount larger than this (in satoshi) is valid.
+ * No amount larger than this (in yaro) is valid.
  *
  * Note that this constant is *not* the total money supply, which in Bitcoin
- * currently happens to be less than 21,000,000 BCH for various reasons, but
+ * currently happens to be less than 77,000,000 BCH for various reasons, but
  * rather a sanity check. As this sanity check is used by consensus-critical
  * validation code, the exact value of the MAX_MONEY constant is consensus
  * critical; in unusual circumstances like a(nother) overflow bug that allowed
  * for the creation of coins out of thin air modification could lead to a fork.
  */
-inline constexpr Amount MAX_MONEY = 21'000'000 * COIN;
+inline constexpr Amount MAX_MONEY = 77'000'000 * COIN;
 inline bool MoneyRange(const Amount nValue) {
     return nValue >= Amount::zero() && nValue <= MAX_MONEY;
 }
